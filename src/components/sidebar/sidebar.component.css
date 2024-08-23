@@ -1,0 +1,53 @@
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background: #333;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: width 0.3s;
+}
+
+.sidebar.active {
+  width: 80px;
+}
+
+.sidebar button {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  padding: 10px;
+}
+
+.sidebar nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar nav ul li a i {
+  margin-right: 10px;
+}
+
+.sidebar nav ul li a img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.sidebar.active nav ul li a span {
+  display: none;
+}
+
