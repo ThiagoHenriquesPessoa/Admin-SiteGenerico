@@ -11,7 +11,9 @@ export class SidebarComponent {
   isActive = true;
 
   toggleSidebar(event: Event) {
-    this.isActive = !this.isActive;
-    event.stopPropagation();
+    const target = event.target as HTMLElement;
+    if (target.tagName !== 'LI' && !target.closest('li')) {
+      this.isActive = !this.isActive;
+    }
   }
 }
