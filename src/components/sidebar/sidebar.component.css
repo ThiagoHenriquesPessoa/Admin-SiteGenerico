@@ -57,5 +57,5 @@
 }
 
 .sidebar.active + .content {
-  margin-left: 100px; /* Ajuste este valor conforme necessário */
+  margin-left: 40px; /* Ajuste este valor conforme necessário */
 }

@@ -1,0 +1,31 @@
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="nomeSite">Nome do Site:</label>
+    <input type="text" id="nomeSite" [(ngModel)]="nomeSite" name="nomeSite" required>
+  </div>
+  <div>
+    <label for="fontePrimaria">Fonte Primária:</label>
+    <input type="text" id="fontePrimaria" [(ngModel)]="fontePrimaria" name="fontePrimaria" required>
+  </div>
+  <div>
+    <label for="fonteSecundaria">Fonte Secundária:</label>
+    <input type="text" id="fonteSecundaria" [(ngModel)]="fonteSecundaria" name="fonteSecundaria" required>
+  </div>
+  <div>
+    <label for="fonteTerciaria">Fonte Terciária:</label>
+    <input type="text" id="fonteTerciaria" [(ngModel)]="fonteTerciaria" name="fonteTerciaria" required>
+  </div>
+  <div>
+    <label for="corPrimaria">Cor Primária:</label>
+    <input type="color" id="corPrimaria" [(ngModel)]="corPrimaria" name="corPrimaria" required>
+  </div>
+  <div>
+    <label for="corSecundaria">Cor Secundária:</label>
+    <input type="color" id="corSecundaria" [(ngModel)]="corSecundaria" name="corSecundaria" required>
+  </div>
+  <div>
+    <label for="corTerciaria">Cor Terciária:</label>
+    <input type="color" id="corTerciaria" [(ngModel)]="corTerciaria" name="corTerciaria" required>
+  </div>
+  <button type="submit">Salvar</button>
+</form>
