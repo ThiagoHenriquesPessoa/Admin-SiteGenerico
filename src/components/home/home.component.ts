@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-cria-site',
+  selector: 'app-home',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './cria-site.component.html',
-  styleUrl: './cria-site.component.css'
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class CriarSiteComponent {
+export class HomeComponent {
   options: string[] = ['Opção 1', 'Opção 2', 'Opção 3'];
   selectedOption: string = this.options[0];
 

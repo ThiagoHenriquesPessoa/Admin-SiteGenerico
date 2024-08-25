@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CriaSiteComponent } from './cria-site.component';
+import { HomeComponent } from './home.component';
 
-describe('CriaSiteComponent', () => {
-  let component: CriaSiteComponent;
-  let fixture: ComponentFixture<CriaSiteComponent>;
+describe('HomeComponent', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CriaSiteComponent]
+      imports: [HomeComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(CriaSiteComponent);
+
+    fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

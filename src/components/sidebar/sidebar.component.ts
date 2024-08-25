@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CriarSiteComponent } from "../cria-site/cria-site.component";
+import { HomeComponent } from "../home/home.component";
 import { ContratosComponent } from "../contratos/contratos.component";
 import { EmailsComponent } from "../emails/emails.component";
 import { ModalsComponent } from "../modals/modals.component";
@@ -8,7 +8,7 @@ import { ModalsComponent } from "../modals/modals.component";
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, CriarSiteComponent, ContratosComponent, EmailsComponent, ModalsComponent],
+  imports: [CommonModule, HomeComponent, ContratosComponent, EmailsComponent, ModalsComponent],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
