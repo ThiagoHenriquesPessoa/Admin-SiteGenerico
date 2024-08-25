@@ -1,4 +1,15 @@
-.home-container {
+.home{
   margin-left: 60px; /* Ajuste este valor conforme necessário */
+}
+
+.home-container {
+  border: 3px solid #000;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.cria-site-container{
+  border: 3px solid #000;
+  border-radius: 30px;
   padding: 20px;
 }
