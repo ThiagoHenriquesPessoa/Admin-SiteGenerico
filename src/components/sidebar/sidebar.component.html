@@ -1,10 +1,31 @@
 <div class="sidebar" [class.active]="isActive" (click)="toggleSidebar($event)">
   <nav>
     <ul>
-      <li (click)="$event.stopPropagation()"><a href="#"><img src="assets/casa.png" alt="Home Icon"> <span>Home</span></a></li>
-      <li (click)="$event.stopPropagation()"><a href="#"><img src="assets/aplicativo-mensagem.png" alt="About Icon"> <span>About</span></a></li>
-      <li (click)="$event.stopPropagation()"><a href="#"><img src="assets/aplicativo-planilha.png" alt="Services Icon"> <span>Services</span></a></li>
-      <li (click)="$event.stopPropagation()"><a href="#"><img src="assets/gostar.png" alt="Contact Icon"> <span>Contact</span></a></li>
+      <li (click)="setActiveContent('home'); $event.stopPropagation()">
+        <a href="#"><img src="assets/casa.png" alt="Home Icon"> <span>Home</span></a>
+      </li>
+      <li (click)="setActiveContent('contratos'); $event.stopPropagation()">
+        <a href="#"><img src="assets/aplicativo-mensagem.png" alt="Contratos"> <span>Contratos</span></a>
+      </li>
+      <li (click)="setActiveContent('emails'); $event.stopPropagation()">
+        <a href="#"><img src="assets/aplicativo-planilha.png" alt="E-mails"> <span>E-mails</span></a>
+      </li>
+      <li (click)="setActiveContent('modals'); $event.stopPropagation()">
+        <a href="#"><img src="assets/gostar.png" alt="Modals"> <span>Modals</span></a>
+      </li>
     </ul>
   </nav>
+</div>
+
+<div class="content" *ngIf="activeContent === 'home'">
+  <app-cria-site></app-cria-site>
+</div>
+<div class="content" *ngIf="activeContent === 'contratos'">
+  <app-contratos></app-contratos>
+</div>
+<div class="content" *ngIf="activeContent === 'emails'">
+  <app-emails></app-emails>
+</div>
+<div class="content" *ngIf="activeContent === 'modals'">
+  <app-modals></app-modals>
 </div>
