@@ -51,3 +51,11 @@
   display: none;
 }
 
+.content {
+  margin-left: 200px; /* Ajuste este valor conforme necessário */
+  padding: 20px;
+}
+
+.sidebar.active + .content {
+  margin-left: 100px; /* Ajuste este valor conforme necessário */
+}
