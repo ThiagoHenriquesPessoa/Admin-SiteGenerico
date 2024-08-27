@@ -40,8 +40,13 @@
     <input type="color" id="corTerciaria" [(ngModel)]="corTerciaria" name="corTerciaria" required>
   </div>
   <div>
-  <label for="quantidadeTelas">Quantidade de Telas:</label>
-    <input type="text" id="quantidadeTelas" [(ngModel)]="quantidadeTelas" name="quantidadeTelas" required>
+    <label for="rodaPe">RodaPé:</label>
+    <input type="text" id="rodaPe" [(ngModel)]="rodaPe" name="rodaPe" required>
   </div>
+  <div>
+    <label for="quantidadeTelas">Quantidade de Telas:</label>
+    <input type="number" id="quantidadeTelas" [(ngModel)]="quantidadeTelas" name="quantidadeTelas" required (input)="updateTelas()">
+  </div>
+  <app-cria-tela *ngFor="let tela of telas; let i = index" [tela]="telas[i]" [index]="i"></app-cria-tela>
   <button type="submit">Salvar</button>
 </form>
