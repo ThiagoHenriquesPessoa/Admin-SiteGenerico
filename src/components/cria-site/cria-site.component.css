@@ -1,1 +1,22 @@
+.form-cria-site {
+  position: relative; /* Necessário para que o botão absoluto seja posicionado em relação ao formulário */
+}
 
+.form-cria-site div {
+  margin-bottom: 15px; /* Espaço entre as divs */
+}
+
+.form-cria-site label {
+  margin: 5px; /* Espaço entre o label e o input */
+}
+
+.form-cria-site input {
+  margin-bottom: 5px; /* Espaço adicional entre os inputs, se necessário */
+}
+
+.form-cria-site button {
+  margin: 20px 50px 0px 0px; /* Espaço adicional entre os inputs, se necessário */
+  margin-left: auto; /* Empurra o botão para a direita */
+  align-items: flex-end;
+  display: flex;
+}

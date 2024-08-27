@@ -2,14 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CriaTelaComponent } from "../cria-tela/cria-tela.component";
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cria-site',
   standalone: true,
-  imports: [CommonModule, FormsModule, CriaTelaComponent],
+  imports: [CommonModule, FormsModule, CriaTelaComponent, HttpClientModule],
   templateUrl: './cria-site.component.html',
   styleUrl: './cria-site.component.css'
 })
+
 export class CriaSiteComponent implements OnInit{
   nomeSite: string = '';
   fontePrimaria: string = '';
@@ -21,12 +24,43 @@ export class CriaSiteComponent implements OnInit{
   corPrimaria: string = '#000000';
   corSecundaria: string = '#000000';
   corTerciaria: string = '#000000';
-  rodaPe: boolean = false;
+  barraSuperior: boolean = true;
+  rodaPe: boolean = true;
   quantidadeTelas: number = 1;
-  telas: string[] = [];
+  telas: any[] = [];
+
+  constructor(private http: HttpClient) {}
 
   onSubmit() {
-    // Adicione aqui a lógica para salvar os dados do formulário
+    const dadosFormulario = {
+      nomeSite: this.nomeSite,
+      fontePrimaria: this.fontePrimaria,
+      fonteSecundaria: this.fonteSecundaria,
+      fonteTerciaria: this.fonteTerciaria,
+      tamanhoFontePrimaria: this.tamanhoFontePrimaria,
+      tamanhoFonteSecundaria: this.tamanhoFonteSecundaria,
+      tamanhoFonteTerciaria: this.tamanhoFonteTerciaria,
+      corPrimaria: this.corPrimaria,
+      corSecundaria: this.corSecundaria,
+      corTerciaria: this.corTerciaria,
+      barraSuperior: this.barraSuperior,
+      rodaPe: this.rodaPe,
+      quantidadeTelas: this.quantidadeTelas,
+      telas: this.telas
+    };
+
+    console.log('Dados enviados com sucesso!', dadosFormulario);
+
+    this.http.post('https://sua-api.com/endpoint', dadosFormulario).subscribe(
+      (response) => {
+        console.log('Dados enviados com sucesso!', response);
+        // Aqui, você pode tratar a resposta da API conforme necessário
+      },
+      (error) => {
+        console.error('Erro ao enviar dados:', error);
+        // Trate o erro de acordo com a sua lógica
+      }
+    );
   }
 
   ngOnInit() {
@@ -34,6 +68,25 @@ export class CriaSiteComponent implements OnInit{
   }
 
   updateTelas() {
-    this.telas = Array(this.quantidadeTelas).fill('');
+    if (this.quantidadeTelas < 1) {
+      this.quantidadeTelas = 1;
+    }
+    this.telas = Array(this.quantidadeTelas).fill({}).map(() => ({
+      habilitaTexto: false,
+      textoUm: '',
+      textoDois: '',
+      habilitaImagemEsquerda: false,
+      habilitaImagemDireita: false,
+      imagemEsquerda: '',
+      imagemDireita: ''
+    }));
+  }
+
+  handleTelaChange(event: { index: number, tela: any }) {
+    this.telas[event.index] = event.tela;
+  }
+
+  toggleRodaPe() {
+    this.rodaPe = !this.rodaPe;
   }
 }

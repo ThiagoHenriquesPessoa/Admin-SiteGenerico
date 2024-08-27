@@ -1,4 +1,41 @@
 <div class="box-tela">
   <label for="tela{{index}}">Tela {{index + 1}}:</label>
-  <input type="text" id="tela{{index}}" [(ngModel)]="tela" name="tela{{index}}">
+  <div class="lado-a">
+    <label for="ladoA">Lado A:</label>
+    <div>
+      <label for="habilitaTexto">Habilitar Texto:</label>
+      <input class="switch" type="checkbox" id="habilitaTexto" role="switch" [(ngModel)]="habilitaTexto" name="habilitaTexto" (change)="toggleHabilitaImagem()">
+    </div>
+    <div *ngIf="habilitaTexto">
+      <div>
+        <label for="textoUm">Texto 1:</label>
+        <input type="text" id="textoUm" [(ngModel)]="textoUm" name="textoUm" required>
+      </div>
+      <div>
+        <label for="textoDois">Texto 2:</label>
+        <input type="text" id="textoDois" [(ngModel)]="textoDois" name="textoDois" required>
+      </div>
+    </div>
+    <div>
+      <label for="habilitaImagem">Habilitar Imagem:</label>
+      <input class="switch" type="checkbox" id="habilitaImagem" role="switch" [(ngModel)]="habilitaImagemEsquerda" name="habilitaImagem" (change)="toggleHabilitaTexto()">
+    </div>
+    <div *ngIf="habilitaImagemEsquerda">
+      <label for="imagemEsquerda">Imagem Esquerda:</label>
+      <input type="text" id="imagemEsquerda" [(ngModel)]="imagemEsquerda" name="imagemEsquerda" required>
+    </div>
+  </div>
+
+
+  <div class="lado-b">
+    <label for="ladoB">Lado B:</label>
+    <div>
+      <label for="habilitaImagem">Habilitar Imagem:</label>
+      <input class="switch" type="checkbox" id="habilitaImagem" role="switch" [(ngModel)]="habilitaImagemDireita" name="habilitaImagem" (change)="toggleHabilitaTexto()">
+    </div>
+    <div *ngIf="habilitaImagemDireita">
+      <label for="imagemDireita">Imagem Direita:</label>
+      <input type="text" id="imagemDireita" [(ngModel)]="imagemDireita" name="imagemDireita" required>
+    </div>
+  </div>
 </div>

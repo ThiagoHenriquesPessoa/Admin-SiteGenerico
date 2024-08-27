@@ -1,7 +1,7 @@
 <div class="home">
   <div class="home-container">
-    <button (click)="criarSite()">Criar Site</button>
-    <select [(ngModel)]="selectedOption">
+    <button class="button" (click)="criarSite()">Criar Site</button>
+    <select class="select" [(ngModel)]="selectedOption">
       <option *ngFor="let option of options" [value]="option">{{ option }}</option>
     </select>
   </div>
