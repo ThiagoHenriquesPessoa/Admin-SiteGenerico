@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CriaTelaComponent } from "../cria-tela/cria-tela.component";
+import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cria-site',
   standalone: true,
-  imports: [CommonModule, FormsModule, CriaTelaComponent],
+  imports: [CommonModule, FormsModule, CriaTelaComponent, HttpClientModule],
   templateUrl: './cria-site.component.html',
   styleUrl: './cria-site.component.css'
 })
@@ -26,7 +27,7 @@ export class CriaSiteComponent implements OnInit{
   barraSuperior: boolean = true;
   rodaPe: boolean = true;
   quantidadeTelas: number = 1;
-  telas: string[] = [];
+  telas: any[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -48,6 +49,8 @@ export class CriaSiteComponent implements OnInit{
       telas: this.telas
     };
 
+    console.log('Dados enviados com sucesso!', dadosFormulario);
+
     this.http.post('https://sua-api.com/endpoint', dadosFormulario).subscribe(
       (response) => {
         console.log('Dados enviados com sucesso!', response);
@@ -68,7 +71,19 @@ export class CriaSiteComponent implements OnInit{
     if (this.quantidadeTelas < 1) {
       this.quantidadeTelas = 1;
     }
-    this.telas = Array(this.quantidadeTelas).fill('');
+    this.telas = Array(this.quantidadeTelas).fill({}).map(() => ({
+      habilitaTexto: false,
+      textoUm: '',
+      textoDois: '',
+      habilitaImagemEsquerda: false,
+      habilitaImagemDireita: false,
+      imagemEsquerda: '',
+      imagemDireita: ''
+    }));
+  }
+
+  handleTelaChange(event: { index: number, tela: any }) {
+    this.telas[event.index] = event.tela;
   }
 
   toggleRodaPe() {
