@@ -14,6 +14,10 @@ export class CriaSiteComponent {
   fontePrimaria: string = '';
   fonteSecundaria: string = '';
   fonteTerciaria: string = '';
+  tamanhoFontePrimaria: number = 10;
+  tamanhoFonteSecundaria: number = 10;
+  tamanhoFonteTerciaria: number = 10;
+  quantidadeTelas: number = 1;
   corPrimaria: string = '#000000';
   corSecundaria: string = '#000000';
   corTerciaria: string = '#000000';
