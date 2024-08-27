@@ -15,15 +15,17 @@ export class CriaTelaComponent {
   habilitaTexto: boolean = false;
   textoUm: string = '';
   textoDois: string = '';
-  habilitaImagem: boolean = false;
+  habilitaImagemEsquerda: boolean = false;
+  habilitaImagemDireita: boolean = false;
   imagemEsquerda: string = '';
+  imagemDireita: string = '';
 
   toggleHabilitaTexto() {
     this.habilitaTexto = false;
   }
 
   toggleHabilitaImagem() {
-    this.habilitaImagem = false;
+    this.habilitaImagemEsquerda = false;
   }
 }
 

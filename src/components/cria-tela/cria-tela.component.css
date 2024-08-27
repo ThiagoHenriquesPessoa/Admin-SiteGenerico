@@ -12,3 +12,15 @@
   padding: 20px;
   flex: 1; /* Opcional: Faz com que os elementos ocupem o mesmo espaço */
 }
+
+.box-tela div {
+  margin-bottom: 15px; /* Espaço entre as divs */
+}
+
+.box-tela label {
+  margin: 5px; /* Espaço entre o label e o input */
+}
+
+.box-tela input {
+  margin-bottom: 5px; /* Espaço adicional entre os inputs, se necessário */
+}
