@@ -21,7 +21,8 @@ export class CriaSiteComponent implements OnInit{
   corPrimaria: string = '#000000';
   corSecundaria: string = '#000000';
   corTerciaria: string = '#000000';
-  rodaPe: boolean = false;
+  barraSuperior: boolean = true;
+  rodaPe: boolean = true;
   quantidadeTelas: number = 1;
   telas: string[] = [];
 
@@ -34,6 +35,13 @@ export class CriaSiteComponent implements OnInit{
   }
 
   updateTelas() {
+    if (this.quantidadeTelas < 1) {
+      this.quantidadeTelas = 1;
+    }
     this.telas = Array(this.quantidadeTelas).fill('');
+  }
+
+  toggleRodaPe() {
+    this.rodaPe = !this.rodaPe;
   }
 }

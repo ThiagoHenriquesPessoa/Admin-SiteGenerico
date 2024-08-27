@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()">
+<form class="form-cria-site" (ngSubmit)="onSubmit()">
   <div>
     <label for="nomeSite">Nome do Site:</label>
     <input type="text" id="nomeSite" [(ngModel)]="nomeSite" name="nomeSite" required>
@@ -40,12 +40,16 @@
     <input type="color" id="corTerciaria" [(ngModel)]="corTerciaria" name="corTerciaria" required>
   </div>
   <div>
+    <label for="barraSuperior">Barra Superior:</label>
+    <input class="switch" type="checkbox" id="barraSuperior" role="switch" [(ngModel)]="barraSuperior" name="barraSuperior">
+  </div>
+  <div>
     <label for="rodaPe">RodaPé:</label>
-    <input type="text" id="rodaPe" [(ngModel)]="rodaPe" name="rodaPe" required>
+    <input class="switch" type="checkbox" id="rodaPe" role="switch" [(ngModel)]="rodaPe" name="rodaPe">
   </div>
   <div>
     <label for="quantidadeTelas">Quantidade de Telas:</label>
-    <input type="number" id="quantidadeTelas" [(ngModel)]="quantidadeTelas" name="quantidadeTelas" required (input)="updateTelas()">
+    <input type="number" id="quantidadeTelas" [(ngModel)]="quantidadeTelas" name="quantidadeTelas" required (input)="updateTelas()" min="1">
   </div>
   <app-cria-tela *ngFor="let tela of telas; let i = index" [tela]="telas[i]" [index]="i"></app-cria-tela>
   <button type="submit">Salvar</button>
