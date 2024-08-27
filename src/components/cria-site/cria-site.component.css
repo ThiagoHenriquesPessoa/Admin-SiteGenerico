@@ -20,28 +20,3 @@
   align-items: flex-end;
   display: flex;
 }
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-  background-color: #3b05fd;
-  border-radius: 10px;
-}
-
-.switch::before {
-  content: "";
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  background-color: #000000;
-  border-radius: 50%;
-  left: 2px;
-  top: 1px;
-  transition: 0.2s;
-}
-
-.switch:checked::before {
-  left: 20px;
-}

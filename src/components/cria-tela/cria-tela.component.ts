@@ -12,4 +12,18 @@ import { FormsModule } from '@angular/forms';
 export class CriaTelaComponent {
   @Input() tela: string = '';
   @Input() index: number = 0;
+  habilitaTexto: boolean = false;
+  textoUm: string = '';
+  textoDois: string = '';
+  habilitaImagem: boolean = false;
+  imagemEsquerda: string = '';
+
+  toggleHabilitaTexto() {
+    this.habilitaTexto = false;
+  }
+
+  toggleHabilitaImagem() {
+    this.habilitaImagem = false;
+  }
 }
+

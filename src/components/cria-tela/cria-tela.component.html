@@ -1,17 +1,31 @@
 <div class="box-tela">
   <label for="tela{{index}}">Tela {{index + 1}}:</label>
   <div class="lado-a">
-    <label for="ladoA">Lado A:</label>
     <div>
-      <label for="nomeSite">Nome do Site:</label>
+      <label for="habilitaTexto">Habilitar Texto:</label>
+      <input class="switch" type="checkbox" id="habilitaTexto" role="switch" [(ngModel)]="habilitaTexto" name="habilitaTexto" (change)="toggleHabilitaImagem()">
+    </div>
+    <div *ngIf="habilitaTexto">
+      <div>
+        <label for="textoUm">Texto 1:</label>
+        <input type="text" id="textoUm" [(ngModel)]="textoUm" name="textoUm" required>
+      </div>
+      <div>
+        <label for="textoDois">Texto 2:</label>
+        <input type="text" id="textoDois" [(ngModel)]="textoDois" name="textoDois" required>
+      </div>
     </div>
     <div>
-      <label for="nomeSite">Nome do Site:</label>
+      <label for="habilitaImagem">Habilitar Imagem:</label>
+      <input class="switch" type="checkbox" id="habilitaImagem" role="switch" [(ngModel)]="habilitaImagem" name="habilitaImagem" (change)="toggleHabilitaTexto()">
     </div>
-    <div>
-      <label for="nomeSite">Nome do Site:</label>
+    <div *ngIf="habilitaImagem">
+      <label for="imagemEsquerda">Imagem Esquerda:</label>
+      <input type="text" id="imagemEsquerda" [(ngModel)]="imagemEsquerda" name="imagemEsquerda" required>
     </div>
   </div>
+
+
   <div class="lado-b">
     <label for="ladoB">Lado B:</label>
     <div>
