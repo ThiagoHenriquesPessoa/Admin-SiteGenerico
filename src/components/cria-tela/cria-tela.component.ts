@@ -19,8 +19,8 @@ export class CriaTelaComponent {
   textoDois: string = '';
   habilitaImagemEsquerda: boolean = false;
   habilitaImagemDireita: boolean = false;
-  imagemEsquerda: string = '';
-  imagemDireita: string = '';
+  imagemEsquerda: File | null = null;
+  imagemDireita: File | null = null;
 
   toggleHabilitaTexto() {
     this.habilitaTexto = false;
