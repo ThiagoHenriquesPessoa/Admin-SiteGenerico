@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { PostService } from './../../app/servicos/post.service';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CriaTelaComponent } from "../cria-tela/cria-tela.component";
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cria-site',
   standalone: true,
   imports: [CommonModule, FormsModule, CriaTelaComponent, HttpClientModule],
+  providers: [PostService],
   templateUrl: './cria-site.component.html',
   styleUrl: './cria-site.component.css'
 })
@@ -29,10 +30,14 @@ export class CriaSiteComponent implements OnInit{
   quantidadeTelas: number = 1;
   telas: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  @ViewChildren(CriaTelaComponent) criaTelaComponents!: QueryList<CriaTelaComponent>;
+
+  constructor(private postService: PostService) { }
 
   onSubmit() {
-    const dadosFormulario = {
+    this.criaTelaComponents.forEach((component) => component.emitChange());
+
+    const SiteDto = {
       nomeSite: this.nomeSite,
       fontePrimaria: this.fontePrimaria,
       fonteSecundaria: this.fonteSecundaria,
@@ -49,14 +54,14 @@ export class CriaSiteComponent implements OnInit{
       telas: this.telas
     };
 
-    console.log('Dados enviados com sucesso!', dadosFormulario);
+    console.log('Dados enviados com sucesso!', SiteDto);
 
-    this.http.post('https://sua-api.com/endpoint', dadosFormulario).subscribe(
-      (response) => {
+    this.postService.criaSite(SiteDto).subscribe(
+      (response: any) => {
         console.log('Dados enviados com sucesso!', response);
         // Aqui, você pode tratar a resposta da API conforme necessário
       },
-      (error) => {
+      (error: any) => {
         console.error('Erro ao enviar dados:', error);
         // Trate o erro de acordo com a sua lógica
       }
@@ -77,8 +82,8 @@ export class CriaSiteComponent implements OnInit{
       textoDois: '',
       habilitaImagemEsquerda: false,
       habilitaImagemDireita: false,
-      imagemEsquerda: '',
-      imagemDireita: ''
+      imagemEsquerda: null,
+      imagemDireita: null
     }));
   }
 

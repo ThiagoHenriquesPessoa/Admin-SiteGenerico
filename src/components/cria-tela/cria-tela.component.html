@@ -22,7 +22,7 @@
     </div>
     <div *ngIf="habilitaImagemEsquerda">
       <label for="imagemEsquerda">Imagem Esquerda:</label>
-      <input type="text" id="imagemEsquerda" [(ngModel)]="imagemEsquerda" name="imagemEsquerda" required>
+      <input type="file" id="imagemEsquerda" [(ngModel)]="imagemEsquerda" name="imagemEsquerda" required>
     </div>
   </div>
 
@@ -31,11 +31,11 @@
     <label for="ladoB">Lado B:</label>
     <div>
       <label for="habilitaImagem">Habilitar Imagem:</label>
-      <input class="switch" type="checkbox" id="habilitaImagem" role="switch" [(ngModel)]="habilitaImagemDireita" name="habilitaImagem" (change)="toggleHabilitaTexto()">
+      <input class="switch" type="checkbox" id="habilitaImagem" role="switch" [(ngModel)]="habilitaImagemDireita" name="habilitaImagem">
     </div>
     <div *ngIf="habilitaImagemDireita">
       <label for="imagemDireita">Imagem Direita:</label>
-      <input type="text" id="imagemDireita" [(ngModel)]="imagemDireita" name="imagemDireita" required>
+      <input type="file" id="imagemDireita" [(ngModel)]="imagemDireita" name="imagemDireita" required>
     </div>
   </div>
 </div>
