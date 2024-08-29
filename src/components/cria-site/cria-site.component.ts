@@ -1,21 +1,23 @@
-import { PostService } from './../../app/servicos/post.service';
+import { HttpService } from '../../app/servicos/http.service';
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CriaTelaComponent } from "../cria-tela/cria-tela.component";
 import { HttpClientModule } from '@angular/common/http';
+import { SiteDto, TelaDto } from '../../Models/site-dto.model';
 
 @Component({
   selector: 'app-cria-site',
   standalone: true,
   imports: [CommonModule, FormsModule, CriaTelaComponent, HttpClientModule],
-  providers: [PostService],
+  providers: [HttpService],
   templateUrl: './cria-site.component.html',
   styleUrl: './cria-site.component.css'
 })
 
 export class CriaSiteComponent implements OnInit{
   nomeSite: string = 'teste';
+  corBackground: string = 'arial';
   fontePrimaria: string = 'arial';
   fonteSecundaria: string = 'arial';
   fonteTerciaria: string = 'arial';
@@ -28,51 +30,49 @@ export class CriaSiteComponent implements OnInit{
   barraSuperior: boolean = true;
   rodaPe: boolean = true;
   quantidadeTelas: number = 1;
-  telas: any[] = [];
+  telas: TelaDto[] = [];
 
   @ViewChildren(CriaTelaComponent) criaTelaComponents!: QueryList<CriaTelaComponent>;
 
-  constructor(private postService: PostService) { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
     this.updateTelas();
   }
 
-  onSubmit() {
-    this.criaTelaComponents.forEach((component) => component.emitChange());
+  onSubmit(): void  {
+  this.criaTelaComponents.forEach((component) => component.emitChange());
 
-    const SiteDto = {
-      NomeSite: this.nomeSite,
-      FontePrimaria: this.fontePrimaria,
-      FonteSecundaria: this.fonteSecundaria,
-      FonteTerciaria: this.fonteTerciaria,
-      TamanhoFontePrimaria: this.tamanhoFontePrimaria,
-      TamanhoFonteSecundaria: this.tamanhoFonteSecundaria,
-      TamanhoFonteTerciaria: this.tamanhoFonteTerciaria,
-      CorPrimaria: this.corPrimaria,
-      CorSecundaria: this.corSecundaria,
-      CorTerciaria: this.corTerciaria,
-      BarraSuperior: this.barraSuperior,
-      RodaPe: this.rodaPe,
-      QuantidadeTelas: this.quantidadeTelas,
-      Telas: this.telas
-    };
+  const siteDto: SiteDto = {
+    NomeSite: this.nomeSite,
+    CorBackground: this.corBackground,
+    FontePrimaria: this.fontePrimaria,
+    FonteSecundaria: this.fonteSecundaria,
+    FonteTerciaria: this.fonteTerciaria,
+    TamanhoFontePrimaria: this.tamanhoFontePrimaria,
+    TamanhoFonteSecundaria: this.tamanhoFonteSecundaria,
+    TamanhoFonteTerciaria: this.tamanhoFonteTerciaria,
+    CorPrimaria: this.corPrimaria,
+    CorSecundaria: this.corSecundaria,
+    CorTerciaria: this.corTerciaria,
+    BarraSuperior: this.barraSuperior,
+    RodaPe: this.rodaPe,
+    QuantidadeTelas: this.quantidadeTelas,
+    Telas: this.telas
+  };
 
-    this.postService.criaSite(SiteDto).subscribe();
-  }
+  this.httpService.criaSite(siteDto);
+}
 
-  updateTelas() {
-    if (this.quantidadeTelas < 1) {
-      this.quantidadeTelas = 1;
-    }
-    this.telas = Array(this.quantidadeTelas).fill({}).map(() => ({
-      habilitaTexto: false,
-      textoUm: '',
-      textoDois: '',
-      habilitaImagemEsquerda: false,
-      habilitaImagemDireita: false,
-      imagemEsquerda: null,
-      imagemDireita: null
+  updateTelas(): void {
+      this.telas = Array(this.quantidadeTelas).fill(null).map(() => ({
+      HabilitaTexto: false,
+      TextoUm: '',
+      TextoDois: '',
+      HabilitaImagemEsquerda: false,
+      HabilitaImagemDireita: false,
+      ImagemEsquerda: '',
+      ImagemDireita: ''
     }));
   }
 
