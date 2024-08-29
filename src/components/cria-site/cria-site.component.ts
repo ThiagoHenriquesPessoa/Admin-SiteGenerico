@@ -15,10 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 })
 
 export class CriaSiteComponent implements OnInit{
-  nomeSite: string = '';
-  fontePrimaria: string = '';
-  fonteSecundaria: string = '';
-  fonteTerciaria: string = '';
+  nomeSite: string = 'teste';
+  fontePrimaria: string = 'arial';
+  fonteSecundaria: string = 'arial';
+  fonteTerciaria: string = 'arial';
   tamanhoFontePrimaria: number = 10;
   tamanhoFonteSecundaria: number = 10;
   tamanhoFonteTerciaria: number = 10;
@@ -34,42 +34,31 @@ export class CriaSiteComponent implements OnInit{
 
   constructor(private postService: PostService) { }
 
+  ngOnInit() {
+    this.updateTelas();
+  }
+
   onSubmit() {
     this.criaTelaComponents.forEach((component) => component.emitChange());
 
     const SiteDto = {
-      nomeSite: this.nomeSite,
-      fontePrimaria: this.fontePrimaria,
-      fonteSecundaria: this.fonteSecundaria,
-      fonteTerciaria: this.fonteTerciaria,
-      tamanhoFontePrimaria: this.tamanhoFontePrimaria,
-      tamanhoFonteSecundaria: this.tamanhoFonteSecundaria,
-      tamanhoFonteTerciaria: this.tamanhoFonteTerciaria,
-      corPrimaria: this.corPrimaria,
-      corSecundaria: this.corSecundaria,
-      corTerciaria: this.corTerciaria,
-      barraSuperior: this.barraSuperior,
-      rodaPe: this.rodaPe,
-      quantidadeTelas: this.quantidadeTelas,
-      telas: this.telas
+      NomeSite: this.nomeSite,
+      FontePrimaria: this.fontePrimaria,
+      FonteSecundaria: this.fonteSecundaria,
+      FonteTerciaria: this.fonteTerciaria,
+      TamanhoFontePrimaria: this.tamanhoFontePrimaria,
+      TamanhoFonteSecundaria: this.tamanhoFonteSecundaria,
+      TamanhoFonteTerciaria: this.tamanhoFonteTerciaria,
+      CorPrimaria: this.corPrimaria,
+      CorSecundaria: this.corSecundaria,
+      CorTerciaria: this.corTerciaria,
+      BarraSuperior: this.barraSuperior,
+      RodaPe: this.rodaPe,
+      QuantidadeTelas: this.quantidadeTelas,
+      Telas: this.telas
     };
 
-    console.log('Dados enviados com sucesso!', SiteDto);
-
-    this.postService.criaSite(SiteDto).subscribe(
-      (response: any) => {
-        console.log('Dados enviados com sucesso!', response);
-        // Aqui, você pode tratar a resposta da API conforme necessário
-      },
-      (error: any) => {
-        console.error('Erro ao enviar dados:', error);
-        // Trate o erro de acordo com a sua lógica
-      }
-    );
-  }
-
-  ngOnInit() {
-    this.updateTelas();
+    this.postService.criaSite(SiteDto).subscribe();
   }
 
   updateTelas() {
