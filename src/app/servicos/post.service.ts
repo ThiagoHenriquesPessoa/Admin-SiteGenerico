@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment';
 
@@ -13,7 +13,11 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   criaSite(SiteDto: any): Observable<any> {
-    this.apiUrl = this.apiUrl + 'json/Create/SiteGenerico/';
-    return this.http.post<any>(this.apiUrl, SiteDto);
+    const url = this.apiUrl + 'json/Create/SiteGenerico/';
+    return this.http.post<any>(url, SiteDto, {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    });
   }
 }
