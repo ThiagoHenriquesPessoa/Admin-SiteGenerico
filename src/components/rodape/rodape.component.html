@@ -1,0 +1,19 @@
+<div class="box-rodape">
+  <label for="rodaPe">RODAPÉ:</label>
+  <div>
+    <label for="logo">Imagem da logo:</label>
+    <input type="file" id="logo" (change)="onFileChange($event, 'logo')" name="logo">
+  </div>
+  <div>
+    <label for="textoEsquerdo">Texto Esquerdo:</label>
+    <input type="text" id="textoEsquerdo" [(ngModel)]="textoEsquerdo" name="textoEsquerdo">
+  </div>
+  <div>
+    <label for="textoCentral">Texto Central:</label>
+    <input type="text" id="textoCentral" [(ngModel)]="textoCentral" name="textoCentral">
+  </div>
+  <div>
+    <label for="textoDireito">Texto Direito:</label>
+    <input type="text" id="textoDireito" [(ngModel)]="textoDireito" name="textoDireito">
+  </div>
+</div>

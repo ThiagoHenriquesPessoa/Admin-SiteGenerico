@@ -43,9 +43,15 @@
     <label for="barraSuperior">Barra Superior:</label>
     <input class="switch" type="checkbox" id="barraSuperior" role="switch" [(ngModel)]="barraSuperior" name="barraSuperior">
   </div>
+  <div *ngIf="barraSuperior">
+    <app-barra-superior></app-barra-superior>
+  </div>
   <div>
     <label for="rodaPe">RodaPé:</label>
     <input class="switch" type="checkbox" id="rodaPe" role="switch" [(ngModel)]="rodaPe" name="rodaPe">
+  </div>
+  <div *ngIf="rodaPe">
+    <app-rodape></app-rodape>
   </div>
   <div>
     <label for="quantidadeTelas">Quantidade de Telas:</label>
