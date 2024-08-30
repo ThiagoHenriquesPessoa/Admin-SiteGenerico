@@ -36,11 +36,11 @@ export class CriaSiteComponent implements OnInit{
 
   constructor(private httpService: HttpService) { }
 
-  ngOnInit() {
-    this.updateTelas();
+  async ngOnInit() {
+    await this.updateTelas();
   }
 
-  onSubmit(): void  {
+  async onSubmit(): Promise<void>  {
   this.criaTelaComponents.forEach((component) => component.emitChange());
 
   const siteDto: SiteDto = {
@@ -61,10 +61,10 @@ export class CriaSiteComponent implements OnInit{
     Telas: this.telas
   };
 
-  this.httpService.criaSite(siteDto);
+  await this.httpService.criaSite(siteDto);
 }
 
-  updateTelas(): void {
+  async updateTelas(): Promise<void> {
       this.telas = Array(this.quantidadeTelas).fill(null).map(() => ({
       HabilitaTexto: false,
       TextoUm: '',
@@ -76,7 +76,7 @@ export class CriaSiteComponent implements OnInit{
     }));
   }
 
-  handleTelaChange(event: { index: number, tela: any }) {
+  async handleTelaChange(event: { index: number, tela: any }) {
     this.telas[event.index] = event.tela;
   }
 
