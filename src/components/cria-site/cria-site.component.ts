@@ -1,5 +1,5 @@
 import { HttpService } from '../../app/servicos/http.service';
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CriaTelaComponent } from "../cria-tela/cria-tela.component";
@@ -37,8 +37,8 @@ export class CriaSiteComponent implements OnInit{
   telas: TelaDto[] = [];
 
   @ViewChildren(CriaTelaComponent) criaTelaComponents!: QueryList<CriaTelaComponent>;
-  @ViewChildren(BarraSuperiorComponent) barraSuperiorComponent!: QueryList<BarraSuperiorComponent>;
-  @ViewChildren(RodapeComponent) rodapeComponent!: QueryList<RodapeComponent>;
+  @ViewChild(BarraSuperiorComponent) barraSuperiorComponent!: BarraSuperiorComponent;
+  @ViewChild(RodapeComponent) rodapeComponent!: RodapeComponent;
 
   constructor(private httpService: HttpService) { }
 
@@ -49,30 +49,31 @@ export class CriaSiteComponent implements OnInit{
   }
 
   async onSubmit(): Promise<void>  {
-  this.criaTelaComponents.forEach((component) => component.emitChange());
+    this.criaTelaComponents.forEach((component) => component.emitChange());
+    this.rodapeComponent.emitChange();
 
-  const siteDto: SiteDto = {
-    NomeSite: this.nomeSite,
-    CorBackground: this.corBackground,
-    FontePrimaria: this.fontePrimaria,
-    FonteSecundaria: this.fonteSecundaria,
-    FonteTerciaria: this.fonteTerciaria,
-    TamanhoFontePrimaria: this.tamanhoFontePrimaria,
-    TamanhoFonteSecundaria: this.tamanhoFonteSecundaria,
-    TamanhoFonteTerciaria: this.tamanhoFonteTerciaria,
-    CorPrimaria: this.corPrimaria,
-    CorSecundaria: this.corSecundaria,
-    CorTerciaria: this.corTerciaria,
-    BarraSuperior: this.barraSuperior,
-    BarraSuperiorDto: this.barraSuperiorDto,
-    RodaPe: this.rodaPe,
-    RodaPeDto: this.rodaPeDto,
-    QuantidadeTelas: this.quantidadeTelas,
-    Telas: this.telas
-  };
+    const siteDto: SiteDto = {
+      NomeSite: this.nomeSite,
+      CorBackground: this.corBackground,
+      FontePrimaria: this.fontePrimaria,
+      FonteSecundaria: this.fonteSecundaria,
+      FonteTerciaria: this.fonteTerciaria,
+      TamanhoFontePrimaria: this.tamanhoFontePrimaria,
+      TamanhoFonteSecundaria: this.tamanhoFonteSecundaria,
+      TamanhoFonteTerciaria: this.tamanhoFonteTerciaria,
+      CorPrimaria: this.corPrimaria,
+      CorSecundaria: this.corSecundaria,
+      CorTerciaria: this.corTerciaria,
+      BarraSuperior: this.barraSuperior,
+      BarraSuperiorDto: this.barraSuperiorDto,
+      RodaPe: this.rodaPe,
+      RodaPeDto: this.rodaPeDto,
+      QuantidadeTelas: this.quantidadeTelas,
+      Telas: this.telas
+    };
 
-  await this.httpService.criaSite(siteDto);
-}
+    await this.httpService.criaSite(siteDto);
+  }
 
   async updateTelas(): Promise<void> {
       this.telas = Array(this.quantidadeTelas).fill(null).map(() => ({
@@ -105,6 +106,10 @@ export class CriaSiteComponent implements OnInit{
 
   async handleTelaChange(event: { index: number, tela: any }) {
     this.telas[event.index] = event.tela;
+  }
+
+  async handleRodaPeChange(event: { rodaPe: RodaPeDto }) {
+    this.rodaPeDto = event.rodaPe;
   }
 
   toggleRodaPe() {

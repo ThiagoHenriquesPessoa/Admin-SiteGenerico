@@ -51,7 +51,7 @@
     <input class="switch" type="checkbox" id="rodaPe" role="switch" [(ngModel)]="rodaPe" name="rodaPe">
   </div>
   <div *ngIf="rodaPe">
-    <app-rodape></app-rodape>
+    <app-rodape (rodaPeChange)="handleRodaPeChange($event)"></app-rodape>
   </div>
   <div>
     <label for="quantidadeTelas">Quantidade de Telas:</label>

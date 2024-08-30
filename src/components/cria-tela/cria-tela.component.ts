@@ -25,14 +25,6 @@ export class CriaTelaComponent {
   imagemEsquerda: File | null = null;
   imagemDireita: File | null = null;
 
-  toggleHabilitaTexto() {
-    this.habilitaTexto = false;
-  }
-
-  toggleHabilitaImagem() {
-    this.habilitaImagemEsquerda = false;
-  }
-
   constructor(private bae64Service: Base64Service) { }
 
   async emitChange() {
@@ -63,6 +55,14 @@ export class CriaTelaComponent {
         this.imagemDireita = file;
       }
     }
+  }
+
+  toggleHabilitaTexto() {
+    this.habilitaTexto = false;
+  }
+
+  toggleHabilitaImagem() {
+    this.habilitaImagemEsquerda = false;
   }
 }
 
