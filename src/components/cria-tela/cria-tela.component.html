@@ -22,7 +22,7 @@
     </div>
     <div *ngIf="habilitaImagemEsquerda">
       <label for="imagemEsquerda">Imagem Esquerda:</label>
-      <input type="file" id="imagemEsquerda" [(ngModel)]="imagemEsquerda" name="imagemEsquerda" required>
+      <input type="file" id="imagemEsquerda" (change)="onFileChange($event, 'esquerda')" name="imagemEsquerda" required>
     </div>
   </div>
 
@@ -35,7 +35,7 @@
     </div>
     <div *ngIf="habilitaImagemDireita">
       <label for="imagemDireita">Imagem Direita:</label>
-      <input type="file" id="imagemDireita" [(ngModel)]="imagemDireita" name="imagemDireita" required>
+      <input type="file" id="imagemDireita" (change)="onFileChange($event, 'direita')" name="imagemDireita" required>
     </div>
   </div>
 </div>
