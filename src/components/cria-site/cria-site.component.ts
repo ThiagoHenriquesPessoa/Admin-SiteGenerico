@@ -18,11 +18,11 @@ import { BarraSuperiorComponent } from "../barra-superior/barra-superior.compone
 })
 
 export class CriaSiteComponent implements OnInit{
-  nomeSite: string = 'teste';
-  corBackground: string = 'arial';
-  fontePrimaria: string = 'arial';
-  fonteSecundaria: string = 'arial';
-  fonteTerciaria: string = 'arial';
+  nomeSite: string = '';
+  corBackground: string = '';
+  fontePrimaria: string = '';
+  fonteSecundaria: string = '';
+  fonteTerciaria: string = '';
   tamanhoFontePrimaria: number = 10;
   tamanhoFonteSecundaria: number = 10;
   tamanhoFonteTerciaria: number = 10;
@@ -35,6 +35,8 @@ export class CriaSiteComponent implements OnInit{
   rodaPeDto: RodaPeDto | null = null;
   quantidadeTelas: number = 1;
   telas: TelaDto[] = [];
+
+  fontes: string[] = ['Arial', 'Verdana', 'Times New Roman', 'Courier New', 'Georgia'];
 
   @ViewChildren(CriaTelaComponent) criaTelaComponents!: QueryList<CriaTelaComponent>;
   @ViewChild(BarraSuperiorComponent) barraSuperiorComponent!: BarraSuperiorComponent;
