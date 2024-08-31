@@ -49,8 +49,15 @@ export class CriaSiteComponent implements OnInit{
   }
 
   async onSubmit(): Promise<void>  {
-    this.criaTelaComponents.forEach((component) => component.emitChange());
-    this.rodapeComponent.emitChange();
+    if (this.barraSuperiorComponent) {
+      await this.barraSuperiorComponent.emitChange();
+    }
+    if (this.rodapeComponent) {
+      await this.rodapeComponent.emitChange();
+    }
+    if (this.criaTelaComponents && this.criaTelaComponents.length > 0) {
+      await Promise.all(this.criaTelaComponents.map((component) => component.emitChange()));
+    }
 
     const siteDto: SiteDto = {
       NomeSite: this.nomeSite,
@@ -76,7 +83,7 @@ export class CriaSiteComponent implements OnInit{
   }
 
   async updateTelas(): Promise<void> {
-      this.telas = Array(this.quantidadeTelas).fill(null).map(() => ({
+      this.telas = await Array(this.quantidadeTelas).fill(null).map(() => ({
       HabilitaTexto: false,
       TextoUm: '',
       TextoDois: '',
@@ -88,7 +95,7 @@ export class CriaSiteComponent implements OnInit{
   }
 
   async updateBarraSuperior(): Promise<void> {
-    this.barraSuperiorDto = {
+    this.barraSuperiorDto = await {
       TextoEsquerdo: '',
       TextoDireito: '',
       Logo: ''
@@ -96,7 +103,7 @@ export class CriaSiteComponent implements OnInit{
   }
 
   async updateRodaPe(): Promise<void> {
-    this.rodaPeDto = {
+    this.rodaPeDto = await {
       TextoEsquerdo: '',
       TextoCentral: '',
       TextoDireito: '',
@@ -105,14 +112,14 @@ export class CriaSiteComponent implements OnInit{
   }
 
   async handleTelaChange(event: { index: number, tela: any }) {
-    this.telas[event.index] = event.tela;
+    this.telas[event.index] = await event.tela;
   }
 
   async handleRodaPeChange(event: { rodaPe: RodaPeDto }) {
-    this.rodaPeDto = event.rodaPe;
+    this.rodaPeDto = await event.rodaPe;
   }
 
-  toggleRodaPe() {
-    this.rodaPe = !this.rodaPe;
+  async handleBarraSuperiorChange(event: { barraSuperior: BarraSuperiorDto }) {
+    this.barraSuperiorDto = await event.barraSuperior;
   }
 }

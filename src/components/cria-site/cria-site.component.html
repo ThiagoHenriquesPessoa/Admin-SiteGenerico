@@ -44,7 +44,7 @@
     <input class="switch" type="checkbox" id="barraSuperior" role="switch" [(ngModel)]="barraSuperior" name="barraSuperior">
   </div>
   <div *ngIf="barraSuperior">
-    <app-barra-superior></app-barra-superior>
+    <app-barra-superior (barraSuperiorChange)="handleBarraSuperiorChange($event)"></app-barra-superior>
   </div>
   <div>
     <label for="rodaPe">RodaPé:</label>

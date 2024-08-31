@@ -21,12 +21,12 @@ export class RodapeComponent{
   textoDireito: string = '';
   logo: File | null = null;
 
-  constructor(private bae64Service: Base64Service) { }
+  constructor(private base64Service: Base64Service) { }
 
   async emitChange() {
-    const logoBase64: string = this.logo ? await this.bae64Service.convertToBase64(this.logo): '';
+    const logoBase64: string = this.logo ? await this.base64Service.convertToBase64(this.logo): '';
 
-    this.rodaPeChange.emit({
+    await this.rodaPeChange.emit({
       rodaPe: {
         TextoEsquerdo: this.textoEsquerdo,
         TextoCentral: this.textoCentral,
@@ -37,7 +37,7 @@ export class RodapeComponent{
   }
 
   async onFileChange(event: Event) {
-    const input = event.target as HTMLInputElement;
+    const input = await event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
       this.logo = file;
