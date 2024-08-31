@@ -1,8 +1,10 @@
 <div class="box-rodape">
-  <label for="rodaPe">RODAPÉ:</label>
+  <div>
+    <label for="rodaPe">RODAPÉ:</label>
+  </div>
   <div>
     <label for="logo">Imagem da logo:</label>
-    <input type="file" id="logo" (change)="onFileChange($event, 'logo')" name="logo">
+    <input type="file" id="logo" (change)="onFileChange($event)" name="logo">
   </div>
   <div>
     <label for="textoEsquerdo">Texto Esquerdo:</label>

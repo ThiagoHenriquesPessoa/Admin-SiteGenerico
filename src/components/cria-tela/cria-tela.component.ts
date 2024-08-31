@@ -25,21 +25,13 @@ export class CriaTelaComponent {
   imagemEsquerda: File | null = null;
   imagemDireita: File | null = null;
 
-  toggleHabilitaTexto() {
-    this.habilitaTexto = false;
-  }
-
-  toggleHabilitaImagem() {
-    this.habilitaImagemEsquerda = false;
-  }
-
   constructor(private bae64Service: Base64Service) { }
 
   async emitChange() {
     const imagemEsquerdaBase64: string = this.imagemEsquerda ? await this.bae64Service.convertToBase64(this.imagemEsquerda): '';
     const imagemDireitaBase64: string = this.imagemDireita ? await this.bae64Service.convertToBase64(this.imagemDireita): '';
 
-    this.telaChange.emit({
+    await this.telaChange.emit({
       index: this.index,
       tela: {
       HabilitaTexto: this.habilitaTexto,
@@ -54,7 +46,7 @@ export class CriaTelaComponent {
   }
 
   async onFileChange(event: Event, side: 'esquerda' | 'direita') {
-    const input = event.target as HTMLInputElement;
+    const input = await event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
       if (side === 'esquerda') {
@@ -63,6 +55,14 @@ export class CriaTelaComponent {
         this.imagemDireita = file;
       }
     }
+  }
+
+  toggleHabilitaTexto() {
+    this.habilitaTexto = false;
+  }
+
+  toggleHabilitaImagem() {
+    this.habilitaImagemEsquerda = false;
   }
 }
 

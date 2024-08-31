@@ -12,17 +12,21 @@ export class HttpService {
 
   async criaSite(siteDto: SiteDto): Promise<any> {
     const url = this.apiUrl + 'json/Create/SiteGenerico/';
-    console.log("serviço 1", siteDto)
-    try{
-    const response = await axios.post(url, siteDto, {
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: url,
       headers: {
         'Content-Type': 'application/json'
-      }
-    });
-    return response.data;
-    }catch(erro){
-    console.log("serviço 2", erro)
-    }
+      },
+      data : siteDto
+    };
 
+    await axios.request(config).then((response) => {
+    console.log(JSON.stringify(response.data));
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 }
