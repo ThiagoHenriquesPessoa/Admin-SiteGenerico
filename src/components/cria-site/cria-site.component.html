@@ -4,16 +4,26 @@
     <input type="text" id="nomeSite" [(ngModel)]="nomeSite" name="nomeSite" required>
   </div>
   <div>
+    <label for="corBackground">Cor BackGround:</label>
+    <input type="color" id="corBackground" [(ngModel)]="corBackground" name="corBackground" required>
+  </div>
+  <div>
     <label for="fontePrimaria">Fonte Primária:</label>
-    <input type="text" id="fontePrimaria" [(ngModel)]="fontePrimaria" name="fontePrimaria" required>
+    <select id="fontePrimaria" [(ngModel)]="fontePrimaria" name="fontePrimaria" required>
+      <option *ngFor="let fonte of fontes" [value]="fonte">{{ fonte }}</option>
+    </select>
   </div>
   <div>
     <label for="fonteSecundaria">Fonte Secundária:</label>
-    <input type="text" id="fonteSecundaria" [(ngModel)]="fonteSecundaria" name="fonteSecundaria" required>
+    <select id="fonteSecundaria" [(ngModel)]="fonteSecundaria" name="fonteSecundaria" required>
+      <option *ngFor="let fonte of fontes" [value]="fonte">{{ fonte }}</option>
+    </select>
   </div>
   <div>
     <label for="fonteTerciaria">Fonte Terciária:</label>
-    <input type="text" id="fonteTerciaria" [(ngModel)]="fonteTerciaria" name="fonteTerciaria" required>
+    <select id="fonteTerciaria" [(ngModel)]="fonteTerciaria" name="fonteTerciaria" required>
+      <option *ngFor="let fonte of fontes" [value]="fonte">{{ fonte }}</option>
+    </select>
   </div>
   <div>
     <label for="fontePrimaria">Tamanho da Fonte Primária:</label>
